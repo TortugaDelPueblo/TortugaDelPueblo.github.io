@@ -1,0 +1,465 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Informatique & Cybersécurité</title>
+    <meta name="description" content="Portfolio informatique - BTS SIO SISR, systèmes, réseaux et cybersécurité.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #080d18;
+            color: #e6edf7;
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.7;
+        }
+
+        :root {
+            --blue: #38bdf8;
+            --dark: #080d18;
+            --card: #111a2b;
+            --border: #243247;
+            --text: #e6edf7;
+            --muted: #9baec5;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--blue);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(8, 13, 24, 0.95);
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(10px);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .logo {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        .logo span {
+            color: var(--blue);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        nav ul a {
+            color: var(--muted);
+            transition: 0.3s;
+        }
+
+        nav ul a:hover {
+            color: var(--blue);
+        }
+
+        .hero {
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero-content {
+            padding: 80px 0;
+        }
+
+        .tag {
+            color: var(--blue);
+            font-size: 0.95rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            line-height: 1.15;
+            margin: 20px 0;
+        }
+
+        h1 span {
+            color: var(--blue);
+        }
+
+        .hero p {
+            color: var(--muted);
+            max-width: 650px;
+            font-size: 1.15rem;
+            margin-bottom: 30px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 22px;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            background: var(--blue);
+            color: #08111d;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px #38bdf833;
+        }
+
+        .btn-secondary {
+            border: 1px solid var(--border);
+            color: white;
+        }
+
+        section {
+            padding: 90px 0;
+        }
+
+        .section-title {
+            font-size: 2.3rem;
+            margin-bottom: 15px;
+        }
+
+        .section-title span {
+            color: var(--blue);
+        }
+
+        .section-description {
+            color: var(--muted);
+            margin-bottom: 40px;
+        }
+
+        .about {
+            border-top: 1px solid var(--border);
+        }
+
+        .about-text {
+            background: var(--card);
+            padding: 30px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            color: var(--muted);
+        }
+
+        .skills-grid, .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            padding: 25px;
+            border-radius: 12px;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--blue);
+        }
+
+        .card h3 {
+            color: var(--blue);
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        .project-tag {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 5px 10px;
+            background: #1c2b40;
+            color: var(--blue);
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        .contact {
+            text-align: center;
+            background: #0c1422;
+            border-top: 1px solid var(--border);
+        }
+
+        .contact p {
+            color: var(--muted);
+            max-width: 600px;
+            margin: 15px auto 30px;
+        }
+
+        footer {
+            padding: 25px;
+            text-align: center;
+            color: var(--muted);
+            border-top: 1px solid var(--border);
+            font-size: 0.9rem;
+        }
+
+        footer span {
+            color: var(--blue);
+        }
+
+        @media (max-width: 600px) {
+            nav {
+                justify-content: center;
+            }
+
+            nav ul {
+                justify-content: center;
+                gap: 12px;
+                font-size: 0.9rem;
+            }
+
+            .hero {
+                min-height: 70vh;
+            }
+
+            section {
+                padding: 60px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <nav>
+            <a href="#accueil" class="logo">PORTFOLIO<span>.</span></a>
+            <ul>
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#apropos">À propos</a></li>
+                <li><a href="#competences">Compétences</a></li>
+                <li><a href="#projets">Projets</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main>
+
+    <!-- ACCUEIL -->
+    <section class="hero" id="accueil">
+        <div class="container hero-content">
+            <div class="tag">Étudiant en informatique · BTS SIO SISR</div>
+
+            <h1>Bienvenue sur<br>mon <span>portfolio.</span></h1>
+
+            <p>
+                Passionné par l'informatique, les systèmes, les réseaux
+                et la cybersécurité. Je développe mes compétences à travers
+                des projets pratiques et des environnements de laboratoire.
+            </p>
+
+            <div class="buttons">
+                <a href="#projets" class="btn btn-primary">Découvrir mes projets</a>
+                <a href="#contact" class="btn btn-secondary">Me contacter</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- A PROPOS -->
+    <section class="about" id="apropos">
+        <div class="container">
+            <h2 class="section-title">À <span>propos</span></h2>
+            <p class="section-description">Mon parcours et mes objectifs</p>
+
+            <div class="about-text">
+                Étudiant en BTS Services Informatiques aux Organisations,
+                option Solutions d'Infrastructure, Systèmes et Réseaux (SISR),
+                je m'intéresse à l'administration des systèmes, à la gestion
+                des infrastructures réseau et à la sécurité informatique.
+
+                <br><br>
+
+                Je réalise différents projets pratiques afin de développer mes
+                compétences, découvrir de nouvelles technologies et apprendre
+                à gérer des infrastructures informatiques.
+            </div>
+        </div>
+    </section>
+
+    <!-- COMPETENCES -->
+    <section id="competences">
+        <div class="container">
+            <h2 class="section-title">Mes <span>compétences</span></h2>
+            <p class="section-description">Technologies et domaines étudiés</p>
+
+            <div class="skills-grid">
+                <div class="card">
+                    <h3>🖥️ Systèmes</h3>
+                    <p>
+                        Windows Server, Active Directory, gestion des utilisateurs,
+                        GPO, Linux et administration système.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3>🌐 Réseaux</h3>
+                    <p>
+                        Adressage IP, VLAN, routage, DNS, DHCP,
+                        segmentation réseau et dépannage.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3>🔐 Cybersécurité</h3>
+                    <p>
+                        Pare-feu, DMZ, gestion des droits,
+                        sécurisation des systèmes et bonnes pratiques.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3>☁️ Virtualisation</h3>
+                    <p>
+                        Proxmox, machines virtuelles, mise en place
+                        de laboratoires et infrastructures de test.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJETS -->
+    <section id="projets">
+        <div class="container">
+            <h2 class="section-title">Mes <span>projets</span></h2>
+            <p class="section-description">
+                Quelques projets réalisés dans le cadre de mon apprentissage.
+            </p>
+
+            <div class="projects-grid">
+
+                <div class="card">
+                    <h3>Active Directory</h3>
+                    <p>
+                        Mise en place d'un domaine Windows, création
+                        d'utilisateurs, d'unités organisationnelles (OU)
+                        et configuration de stratégies de groupe (GPO).
+                    </p>
+                    <span class="project-tag">Windows Server</span>
+                </div>
+
+                <div class="card">
+                    <h3>Infrastructure réseau</h3>
+                    <p>
+                        Création d'une infrastructure réseau avec plusieurs
+                        VLAN, segmentation des réseaux et configuration
+                        des communications entre les équipements.
+                    </p>
+                    <span class="project-tag">VLAN · Réseau</span>
+                </div>
+
+                <div class="card">
+                    <h3>Firewall & DMZ</h3>
+                    <p>
+                        Installation et configuration d'un pare-feu OPNsense,
+                        création d'une DMZ et réflexion sur la séparation
+                        des zones réseau.
+                    </p>
+                    <span class="project-tag">OPNsense · Sécurité</span>
+                </div>
+
+                <div class="card">
+                    <h3>Serveur de fichiers</h3>
+                    <p>
+                        Création d'un serveur de fichiers, gestion des disques,
+                        mise en place d'un stockage et configuration
+                        des dossiers partagés et permissions.
+                    </p>
+                    <span class="project-tag">Stockage · Windows Server</span>
+                </div>
+
+                <div class="card">
+                    <h3>Virtualisation</h3>
+                    <p>
+                        Déploiement de machines virtuelles pour construire
+                        un environnement de laboratoire et tester
+                        différentes configurations système et réseau.
+                    </p>
+                    <span class="project-tag">Proxmox</span>
+                </div>
+
+                <div class="card">
+                    <h3>Gestion informatique</h3>
+                    <p>
+                        Découverte de l'administration centralisée,
+                        du déploiement logiciel et de la gestion
+                        des équipements informatiques.
+                    </p>
+                    <span class="project-tag">Administration IT</span>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Me <span>contacter</span></h2>
+            <p>
+                Vous souhaitez échanger avec moi, discuter d'un projet
+                ou d'une opportunité ? N'hésitez pas à me contacter.
+            </p>
+
+            <!-- Remplace l'adresse ci-dessous par ton adresse e-mail -->
+            <a href="mailto:TON_EMAIL" class="btn btn-primary">
+                Envoyer un e-mail
+            </a>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    Portfolio informatique · BTS SIO SISR · <span>2026</span>
+</footer>
+
+</body>
+</html>
